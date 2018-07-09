@@ -40,7 +40,7 @@ class GameScene: SKScene {
     var gravity:CGFloat = -1.0
     
     func setupPhysics() {
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: gravity)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -1.0)
         physicsWorld.contactDelegate = self
     }
     
@@ -131,7 +131,8 @@ extension GameScene: SKPhysicsContactDelegate {
 
                     run(SKAction.playSoundFileNamed("bling", waitForCompletion: false))
                     score+=1
-                    gravity = gravity-0.02
+                    gravity = gravity-0.05
+                    //physicsWorld.gravity = CGVector(dx: 0.0, dy: gravity)
                     updateScoreLabel()
                     
                     ball.run(SKAction.fadeOut(withDuration: 0.25)) {
